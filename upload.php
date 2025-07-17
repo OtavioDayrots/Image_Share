@@ -7,9 +7,8 @@ use App\Service\ImagesUploadService;
 use App\Model\GaleriaModel;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_FILES['foto']) && isset($_POST['usuarioId'])) {
+    if (isset($_FILES['foto']) && isset($_SESSION['id'])) {
         $imagem = $_FILES['foto'];
-        $usuarioId = $_POST['usuarioId'];
 
         try {
             $uploadService = new ImagesUploadService($imagem);
@@ -19,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $caminhoDaImagem = $resultado['caminho'];
 
             $galeriaModel = new GaleriaModel();
-            $galeriaModel->salvar($resultado['id'], $usuarioId);
+            $galeriaModel->salvar($resultado['id'], $_SESSION['id']);
 
         } catch (\Exception $e) {
             $salvou = false;

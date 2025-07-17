@@ -12,7 +12,7 @@ CREATE TABLE imagens (
 create table usuarios (
 	id int primary key auto_increment,
     nome varchar(255) not null,
-    email varchar(255) not null,
+    email varchar(255) not null unique,
     data_envio DATETIME DEFAULT CURRENT_TIMESTAMP,
     img_perfil_id INT, -- chave estrangeira
     FOREIGN KEY (img_perfil_id) REFERENCES imagens(id)
