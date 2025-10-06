@@ -13,11 +13,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $_SESSION['id'] = $usuario['id'];
         $_SESSION['nome'] = $usuario['nome'];
-        $_SESSION['nome'] = $usuario['email'];
-        $_SESSION['nome'] = $usuario['img_perfil_caminho'];
+        $_SESSION['email'] = $usuario['email'];
+        $_SESSION['img_perfil_caminho'] = $usuario['img_perfil_caminho'];
 
         header( index.php);
     }
+
+if ($_SESSION["id"]){
+    header(index.php);
+}
 
 }
 

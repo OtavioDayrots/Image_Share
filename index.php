@@ -17,13 +17,15 @@ use App\Model\GaleriaModel;
     <main>
         <div class="container-upload">
             <h1>Upload de Fotos</h1>
-            <form action="upload.php" method="POST" enctype="multipart/form-data">
-                <div>
-                    <label for="foto">Foto</label>
-                    <input type="file" name="foto" id="upload" accept="image/*" required>
-                </div>
-                <button type="submit" class="btn">Enviar</button>
-            </form> 
+            <?php if($_SESSION){?>
+                <form action="upload.php" method="POST" enctype="multipart/form-data">
+                    <div>
+                        <label for="foto">Foto</label>
+                        <input type="file" name="foto" id="upload" accept="image/*" required>
+                    </div>
+                    <button type="submit" class="btn">Enviar</button>
+                </form> 
+            <?php } ?>
         </div>
         <div class="container-fotos">
             <h1>Fotos</h1>
