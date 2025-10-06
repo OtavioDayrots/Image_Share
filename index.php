@@ -10,17 +10,14 @@ use App\Model\GaleriaModel;
 <body>
     <header>
         <nav>
-            <a href="upUsuario.php">Cadastro de Usuario</a>
+            <a href="upUsuario.php">Cadastro</a>
+            <a href="loginUsuario.php">Login</a>
         </nav> 
     </header>
     <main>
         <div class="container-upload">
             <h1>Upload de Fotos</h1>
             <form action="upload.php" method="POST" enctype="multipart/form-data">
-                <div>
-                    <label for="usuarioId">Usuario Id</label>
-                    <input type="text" name="usuarioId" required>
-                </div>
                 <div>
                     <label for="foto">Foto</label>
                     <input type="file" name="foto" id="upload" accept="image/*" required>

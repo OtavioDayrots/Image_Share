@@ -32,6 +32,8 @@ class UsuariosModel extends BaseModel {
 
    /**
      * Summary of buscarPorId
+     * @param array $usuario
+     *      ['email', 'senha]
      * @return array
      *      [ 'id', 'nome', 'email',  img_perfil_caminho' ] 
      */
@@ -48,6 +50,29 @@ class UsuariosModel extends BaseModel {
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([
             ':id' => $id
+        ]);
+
+        return $stmt->fetch();
+    }
+       /**
+     * Summary of login
+     * @return array
+     *      [ 'id', 'nome', 'email',  img_perfil_caminho' ] 
+     */
+    public function login($email, $senha): array {
+        $query = "
+            Select
+            U.*,
+            i.caminho as imagem_perfil_caminho
+            from usuarios u
+            left join imagens i on i.id = u.img_perfil_id
+            WHERE u.mail = :email and u.senha = :senha
+        ";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([
+            ':email' => $email,
+            ':senha' => $senha
         ]);
 
         return $stmt->fetch();
