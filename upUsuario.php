@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once __DIR__ ."/app/service/imagesUploadService.php";
 require_once __DIR__ . "/app/model/UsuariosModel.php";
 
@@ -18,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $usuario = [
             'nome' => $_POST['nome'],
             'email' => $_POST['email'],
+            'senha' => $_POST['senha'],
             'img_perfil_id' => $imagemSalva['id'] ?? null
         ];
 
@@ -41,6 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="form-cadastro-group">
                 <label class="form-cadastro-label" for="email">Email:</label>
                 <input class="form-cadastro-input" type="text" name="email" required placeholder="Digite seu email">
+            </div>
+            <div class="form-cadastro-group">
+                <label class="form-cadastro-label" for="senha">Senha:</label>
+                <input class="form-cadastro-input" type="password" name="senha" required placeholder="Digite sua senha">
             </div>
             <div class="form-cadastro-group">
                 <label for="foto">Foto</label>

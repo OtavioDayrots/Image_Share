@@ -4,7 +4,7 @@ namespace App\Service;
 
 require_once __DIR__ . "/../model/ImagensModel.php";
 
-use App\Model\imagensModel;
+use App\Model\ImagensModel;
 
 class ImagesUploadService
 {
