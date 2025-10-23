@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . '/app/model/UsuariosModel.php';
 require_once __DIR__ . '/app/model/GaleriaModel.php';
 

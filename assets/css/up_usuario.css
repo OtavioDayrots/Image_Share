@@ -2,9 +2,10 @@
     max-width: 500px;
     margin: 2rem auto;
     padding: 2rem;
-    background: #ffffff;
+      background: #F7F9FC;
+    border: 1px solid #E6ECF5;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .form-cadastro-title {

@@ -1,7 +1,13 @@
 <?php 
+session_start();
 require_once __DIR__ ."/app/model/GaleriaModel.php";
 
 use App\Model\GaleriaModel;
+
+$usuarioId = null;
+if (isset($_SESSION['id'])){
+    $usuarioId = $_SESSION['id'];
+}
 
 ?>
 
@@ -10,22 +16,27 @@ use App\Model\GaleriaModel;
 <body>
     <header>
         <nav>
-            <a href="upUsuario.php">Cadastro</a>
-            <a href="loginUsuario.php">Login</a>
+            <?php if(!$usuarioId): ?>
+                <a href="upUsuario.php">Cadastro</a>
+                <a href="loginUsuario.php">Login</a>
+            <?php else: ?>
+                <a href="logoff.php"><span class="material-symbols-outlined">logout</span></a>
+            <?php endif;?>
         </nav> 
     </header>
     <main>
         <div class="container-upload">
             <h1>Upload de Fotos</h1>
-            <?php if($_SESSION){?>
+            <?php if($usuarioId): ?>
                 <form action="upload.php" method="POST" enctype="multipart/form-data">
                     <div>
+                        <input type="number" name="usuarioId" value="<?= $usuarioId?>" hidden>
                         <label for="foto">Foto</label>
                         <input type="file" name="foto" id="upload" accept="image/*" required>
                     </div>
                     <button type="submit" class="btn">Enviar</button>
                 </form> 
-            <?php } ?>
+            <?php endif;?>
         </div>
         <div class="container-fotos">
             <h1>Fotos</h1>
